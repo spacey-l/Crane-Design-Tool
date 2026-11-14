@@ -9,6 +9,7 @@ import pint
 
 ureg = pint.UnitRegistry()
 Q_ = ureg.Quantity
+Quantity = pint.Quantity  # type used in annotations
 
 # Standard gravity, used to convert mass (t) to weight force (kN).
 G = Q_(9.80665, "m/s**2")

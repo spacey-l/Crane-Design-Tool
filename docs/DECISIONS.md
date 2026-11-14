@@ -19,3 +19,6 @@ Key project and engineering decisions, with date and who decided.
 | D-013 | 2026-11-14 | Drawings output as AutoCAD-compatible DXF; app hosted in the cloud | Owner | Cloud provider chosen at M11 |
 | D-014 | 2026-11-14 | Generic document templates used until company templates are supplied | Owner | |
 | D-015 | 2026-11-14 | Tandem cranes use two separate crabs, each running on both girders of a double-girder bridge | Owner | |
+| D-016 | 2026-11-14 | Duty can be given three ways: class stated by client, operating pattern, or schedule of lifts | Owner | |
+| D-017 | 2026-11-14 | Crane and mechanism groups (A, M, FEM 9.511) from ISO 4301-1 / FEM 1.001 tables; EN 13001-1 stress history (S) classes worked out per detail in the fatigue checks (M3) | Proposed by Claude, pending owner check | Tables in docs/worked-examples/M1-duty-classification.md |
+| D-018 | 2026-11-14 | kQ for the structure uses net loads. Hoist km adds any fixed attachment mass (hook block) to every load. Hoist running time per lift = up and down the hoist height | Proposed by Claude, pending owner check | |

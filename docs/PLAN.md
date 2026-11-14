@@ -123,7 +123,7 @@ issued only after check and approval by a competent engineer.
 | # | Milestone | Result |
 |---|---|---|
 | M0 | Project set-up: structure, automated tests, CI | Foundations — **done** |
-| M1 | Spec input and data model; duty classification (EN 13001-1) | Specs saved, classes derived |
+| M1 | Spec input and data model; duty classification (EN 13001-1) | Specs saved, classes derived — **classification done, spec model next** |
 | M2 | Loads and load combinations (EN 13001-2): dynamic factors, combinations A/B/C, skew | Load cases for a crane |
 | M3 | Girder checks (EN 13001-3-1): rolled section, then box girder (static, fatigue, stability, deflection) | Girder design check |
 | M4 | Wheel loads and wheel/rail checks (EN 13001-3-3) | End carriage loading |
