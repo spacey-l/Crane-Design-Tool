@@ -48,8 +48,12 @@ design pack.
   - synchronised hoisting with monitoring of the height difference (tilt) between hooks
   - an overload limiter on each hoist and on the combined load (EN 12077-2)
   - a required PL for the synchronisation safety function (EN ISO 13849-1)
-- **Deflection (D-011):** the default vertical limit is span/750. It can be changed per
-  project.
+  - two separate crabs on a double-girder bridge (D-015). This adds synchronised cross
+    travel, anti-collision and minimum crab spacing, wheel load cases with the crabs
+    together at the end approach, and a spreader or lifting beam where the load needs one
+- **Deflection (D-011):** span/750 is the company standard. A tighter limit can be set
+  per project when extra positioning accuracy is needed. Horizontal deflection uses the
+  same default until set otherwise.
 - **Beyond Podem limits:** a custom crab/open winch brings rope, drum, hook, gearbox,
   brake and motor design into scope. That includes an emergency drum brake where the
   application needs one.
@@ -118,7 +122,7 @@ issued only after check and approval by a competent engineer.
 
 | # | Milestone | Result |
 |---|---|---|
-| M0 | Project set-up: structure, automated tests, CI | Foundations |
+| M0 | Project set-up: structure, automated tests, CI | Foundations — **done** |
 | M1 | Spec input and data model; duty classification (EN 13001-1) | Specs saved, classes derived |
 | M2 | Loads and load combinations (EN 13001-2): dynamic factors, combinations A/B/C, skew | Load cases for a crane |
 | M3 | Girder checks (EN 13001-3-1): rolled section, then box girder (static, fatigue, stability, deflection) | Girder design check |
@@ -145,10 +149,10 @@ checked results within an agreed tolerance.
 | CAD system | AutoCAD | D-013 |
 | Hosting | Cloud | D-013 |
 | Templates | Generic for now; your templates later | D-014 |
+| Tandem arrangement | Two separate crabs, each running on both girders of a double-girder bridge | D-015 |
+| Deflection override | Span/750 standard; a tighter limit is set per project when extra accuracy is needed | D-011 |
 
-## 9. Remaining questions (not blocking M0–M4)
+## 9. Remaining items
 
-1. **Tandem arrangement:** are the two hoists on one crab or on two separate crabs on the
-   same girders? This changes the wheel load cases and the anti-collision logic.
-2. **Horizontal deflection:** is there a company limit, or follow the client spec?
-3. **Podem data:** please share the datasheets and price list when convenient (needed at M5).
+- **Podem data and price list:** to be sent as required (needed from M5).
+- **Company templates:** to be sent later (generic templates until then).
