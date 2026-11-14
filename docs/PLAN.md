@@ -41,8 +41,15 @@ design pack.
   - natural frequency
   - wheel load distribution, using bogies/equalisers where needed
   - on gantries, a fixed leg and a hinged leg, plus wind and storm-tie-down checks
-- **Twin hoists (2 × 75t):** load sharing between the hoists, and tandem/synchronised
-  control. Load cases must cover each hoist working alone and both working together.
+- **Twin hoists (2 × 75t), tandem lifting (D-010):** two hoists lift one load together.
+  This needs:
+  - an unequal load-sharing factor in the load cases, plus load cases for each hoist
+    working alone
+  - synchronised hoisting with monitoring of the height difference (tilt) between hooks
+  - an overload limiter on each hoist and on the combined load (EN 12077-2)
+  - a required PL for the synchronisation safety function (EN ISO 13849-1)
+- **Deflection (D-011):** the default vertical limit is span/750. It can be changed per
+  project.
 - **Beyond Podem limits:** a custom crab/open winch brings rope, drum, hook, gearbox,
   brake and motor design into scope. That includes an emergency drum brake where the
   application needs one.
@@ -51,13 +58,13 @@ design pack.
 
 | Mode | Who | Inputs | Outputs |
 |---|---|---|---|
-| **Quick selection** | Sales | Short spec: SWL, span, lift, duty, building limits, environment. Sensible defaults for the rest | Ranked options, budget price (from rates you maintain), GA sketch, wheel loads, quotation datasheet |
+| **Quick selection** | Sales | Short spec: SWL, span, lift, duty, building limits, environment. Sensible defaults for the rest | Ranked options, budget price (Podem prices from their price list, plus rates you maintain for steel, fabrication, electrics, paint, etc.), GA sketch, wheel loads, quotation datasheet |
 | **Full design** | Engineering | Full spec. Any default can be overridden | Full design pack, with check and approve steps |
 
 Both modes work on one project record. When a quote is won, engineering picks up the
 sales selection; nothing is re-entered. Only engineering can issue a design pack.
 
-## 4. Platform: web app (D-006)
+## 4. Platform: cloud-hosted web app (D-006, D-013)
 
 - Sales and engineering share one catalogue, one set of rates and one project history.
 - Nothing to install, and updates reach everyone at once.
@@ -74,7 +81,8 @@ be added later without touching the engineering code.
 | Units | `pint` (every quantity carries its units) |
 | Database | PostgreSQL |
 | Documents | Word templates via `docxtpl`, then PDF |
-| Drawings | DXF/PDF via `ezdxf`, and optionally 3D STEP |
+| Drawings | DXF via `ezdxf` (opens directly in AutoCAD, with your layers and title block), plus PDF |
+| Hosting | Cloud. Provider to be chosen at M11; Azure fits well if you use Microsoft 365 |
 
 ## 5. Selection logic
 
@@ -91,14 +99,14 @@ be added later without touching the engineering code.
 7. **Rank** the options that pass by price, weight, headroom, wheel loads and margin.
    Show why each rejected option failed.
 
-## 6. Design pack (built from your templates)
+## 6. Design pack (generic templates for now, yours later — D-014)
 
 | Document | Contents |
 |---|---|
 | Calculation report | Inputs, formulas, clause references and utilisation for every check |
 | Control philosophy | Operating modes, limits and overload protection, safety functions with required PL, twin-hoist synchronisation, anti-skew control |
 | Designer's risk assessment | CDM 2015 / ISO 12100 hazard log |
-| Drawings | GA, girder and end-carriage fabrication, electrical schematic, bill of materials |
+| Drawings (AutoCAD DXF) | GA, girder and end-carriage fabrication, electrical schematic, bill of materials |
 | O&M manual | EN 12644; inspection and maintenance schedule; design working period monitoring; spares |
 | Compliance file | Test procedures (1.25 × SWL static, 1.1 × SWL dynamic), Declaration of Conformity draft, technical file index |
 
@@ -126,20 +134,21 @@ issued only after check and approval by a competent engineer.
 **Validation:** your past projects become test cases. The tool must reproduce their
 checked results within an agreed tolerance.
 
-## 8. Open questions
+## 8. Answers received (14 November 2026)
 
-1. **90m span:** is this mostly gantries, or overhead travelling cranes in a hall too?
-   That decides whether gantries move earlier than M10.
-2. **2 × 75t:** two hoists on one crab, or two separate crabs? Will they lift one load in
-   tandem, independently, or both?
-3. **Deflection limit:** what is your company standard for vertical and horizontal
-   deflection (e.g. span/750, span/1000)?
-4. **Podem data:** which Podem datasheets or selection tables do you have (PDF/Excel)?
-   And do we have permission to put that data into the tool?
-5. **Drawings:** which CAD system produces your manufacturing drawings? Should the tool
-   produce full fabrication drawings, or a GA plus a parameter sheet that drives your
-   CAD models?
-6. **Templates:** please share your templates and sample documents. A `templates/`
-   folder works if the repository is private.
-7. **Hosting:** should the web app run on your own servers or in the cloud (e.g. Azure,
-   if you use Microsoft 365)?
+| Question | Answer | Decision |
+|---|---|---|
+| 90m span crane types | Overhead travelling and gantry | D-009 |
+| 2 × 75t operation | Tandem lifting of one load | D-010 |
+| Deflection limit | Span/750 usually | D-011 |
+| Podem data | All datasheets held, permission given, sample prices supplied | D-012 |
+| CAD system | AutoCAD | D-013 |
+| Hosting | Cloud | D-013 |
+| Templates | Generic for now; your templates later | D-014 |
+
+## 9. Remaining questions (not blocking M0–M4)
+
+1. **Tandem arrangement:** are the two hoists on one crab or on two separate crabs on the
+   same girders? This changes the wheel load cases and the anti-collision logic.
+2. **Horizontal deflection:** is there a company limit, or follow the client spec?
+3. **Podem data:** please share the datasheets and price list when convenient (needed at M5).
